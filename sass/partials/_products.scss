@@ -1,0 +1,22 @@
+
+.products{
+	text-align: center;
+	border: 20px solid $green !important;
+	border-radius: 30px !important;
+	margin: 0 auto;
+	justify-content: center;
+	
+&__card{
+	margin: -2px;
+	padding: 0;
+	border: 20px solid $yellow !important;
+	min-width: 300px;
+	background: $green;
+	
+}
+&__img{
+	opacity: 90%;
+	filter: brightness(150%);
+	border-radius: 30px !important;
+	padding: 3%;
+}}
