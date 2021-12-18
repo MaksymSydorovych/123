@@ -1,8 +1,9 @@
+import displayMessage from "./displayMessage.js";
 export function createProducts(products) {
   const productsContainer = document.querySelector(".products");
   productsContainer.innerHTML = "";
   if (products.length === 0) {
-    console.log(error);
+    displayMessage("message", "No products found", ".products");
   }
 
   products.forEach(function (product) {

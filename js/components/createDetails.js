@@ -1,6 +1,6 @@
 import { productsUrl } from "../setting/api.js";
 import { getShoppingCart } from "./storage/localStorage.js";
-// Looking for the id parameter
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 
@@ -13,7 +13,6 @@ if (params.has("id")) {
 }
 export const detailsUrl = `${productsUrl}/${id}`;
 export function createDetails(detail) {
-  console.log(detail.image_url);
   document.title = `${detail.title}`;
   const detailsImage = document.querySelector(".details__img");
   detailsImage.innerHTML = "";

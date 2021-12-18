@@ -27,17 +27,17 @@ export async function doLogin(username, password) {
 
     if (json.error) {
       displayMessage(
-        "feedback login__feedback--error",
+        "message__error",
         "Invalid login details",
-        ".login__feedback"
+        ".login__message"
       );
     }
   } catch (error) {
     console.log(error);
     displayMessage(
-      "feedback login__feedback--error",
+      "message__error",
       "Invalid login details",
-      ".login__feedback"
+      ".login__message"
     );
   }
 }

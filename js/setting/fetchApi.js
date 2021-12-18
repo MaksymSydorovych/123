@@ -5,7 +5,5 @@ export async function fetchApi(asyncFunction, url) {
     const result = JSON;
 
     asyncFunction(result);
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 }

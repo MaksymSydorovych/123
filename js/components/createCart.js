@@ -1,13 +1,16 @@
 import { getShoppingCart } from "./storage/localStorage.js";
+import displayMessage from "./displayMessage.js";
 export function createShoppingCart() {
   const shoppingCart = getShoppingCart();
   const cartContainer = document.querySelector(".cart__products");
   cartContainer.innerHTML = "";
+  if (shoppingCart.length === 0) {
+    displayMessage("message", "The cart is empty", ".cart__products");
+  }
 
-  /* Display products from the localStorage() */
   shoppingCart.forEach(function (product) {
     cartContainer.innerHTML += `
-            <div class="cart__product-card col-12 row">
+            <div class="cart__product col-12 row">
                 <img src="${product.image}" alt="${product.title}" class="col cart__image">
                 <div class="cart__content col ">
                     <h5 class="cart__title col">${product.title}</h5>
@@ -23,8 +26,7 @@ export function createShoppingCart() {
         `;
   });
 
-  /* Total Price: */
-  const totalPriceContainer = document.querySelector(".cart__total__price");
+  const totalPriceContainer = document.querySelector(".cart__total--price");
 
   let totalPrice = 0;
 

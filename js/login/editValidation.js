@@ -7,18 +7,13 @@ import {
   priceError,
   description,
   descriptionError,
-} from "./innerHtml.js";
-
-// Function to validate the contact form
+} from "../components/innerHtml.js";
 export function validateForm() {
   let imageHasError;
   let titleHasError;
   let priceHasError;
   let descriptionHasError;
-
-  // Image URL
   const imageURL = image.value;
-
   if (validateURL(imageURL) === true) {
     imageError.style.display = "none";
     imageHasError = false;
@@ -26,10 +21,7 @@ export function validateForm() {
     imageError.style.display = "block";
     imageHasError = true;
   }
-
-  // Title
   const titleValue = title.value;
-
   if (validateLength(titleValue, 1) === true) {
     titleError.style.display = "none";
     titleHasError = false;
@@ -37,8 +29,6 @@ export function validateForm() {
     titleError.style.display = "block";
     titleHasError = true;
   }
-
-  // Price
   const priceValue = price.value;
 
   if (validateLength(priceValue, 1) === true) {
@@ -49,7 +39,6 @@ export function validateForm() {
     priceHasError = true;
   }
 
-  // Description
   const descriptionValue = description.value;
 
   if (validateLength(descriptionValue, 5) === true) {
@@ -60,10 +49,8 @@ export function validateForm() {
     descriptionHasError = true;
   }
 
-  // Featured
   let featuredValue;
 
-  // Validate Check
   if (
     imageHasError === true ||
     titleHasError === true ||

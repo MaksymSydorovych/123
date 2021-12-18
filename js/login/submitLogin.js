@@ -2,16 +2,16 @@ import { doLogin } from "./doLogin.js";
 import displayMessage from "../components/displayMessage.js";
 export function submitLogin(event) {
   event.preventDefault();
-  const loginFeedback = document.querySelector(".login__feedback");
+  const loginMessage = document.querySelector(".login__message");
 
   const usernameValue = username.value.trim();
   const passwordValue = password.value.trim();
 
   if (usernameValue.length === 0 || passwordValue.length === 0) {
     return displayMessage(
-      "feedback login__feedback--error",
+      "message message__error",
       "Please insert  password and  username",
-      ".login__feedback"
+      ".login__message"
     );
   }
 

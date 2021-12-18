@@ -3,48 +3,45 @@ import { token } from "./components/storage/localStorage.js";
 import deleteButton from "./components/buttons/deleteButton.js";
 import { fetchApi } from "./setting/fetchApi.js";
 import logoutButton from "./components/buttons/logout.js";
-import { submitForm } from "./components/form/submitForm.js";
+import { submitForm } from "./components/buttons/submit.js";
+import { createEdit } from "./components/createEdit.js";
 import {
   form,
   title,
   price,
   description,
   idInput,
-  loading,
   image,
   featured,
   labelFalse,
   labelTrue,
-} from "./components/form/containerVariables.js";
-
-// Redirecting to homepage if they are not logged in
+  loader,
+} from "./components/innerHtml.js";
+import storageAmount from "./components/storage/storageAmount.js";
+storageAmount();
 if (!token) {
-  location.href = "../admin";
+  location.href = "login.html";
 }
 
-// Display Product Menu and Logout button
-fetchApi(productMenu, productsUrl);
-logoutButton();
-
-// Looking for id in URL
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+if (!token) {
+  location.href = "?id=1";
+}
 
-// Redirect to product with id = 1 if url has no id
 if (!id) {
   location.href = "?id=1";
 }
 
-// URL
-const editUrl = url + "/products/" + id;
+const editUrl = url + "products/" + id;
+fetchApi(createEdit, editUrl);
+logoutButton();
 
-// Fetch API
 (async function () {
   try {
     const response = await fetch(editUrl);
     const details = await response.json();
-
     image.value = details.image_url;
     title.value = details.title;
     price.value = details.price;
@@ -53,19 +50,17 @@ const editUrl = url + "/products/" + id;
     idInput.value = details.id;
 
     deleteButton(details.id);
-
+    console.log(details.featured);
     if (details.featured == true) {
-      labelTrue.classList.add("active");
+      labelTrue.classList.add("click");
     } else {
-      labelFalse.classList.add("active");
+      labelFalse.classList.add("click");
     }
   } catch (error) {
     console.log(error);
   } finally {
-    loading.style.display = "none";
-    form.style.display = "block";
+    loader.style.display = "none";
   }
 })();
 
-// Listen for button
 form.addEventListener("submit", submitForm);

@@ -5,11 +5,11 @@ export default function logoutButton() {
 
   if (button) {
     button.onclick = function () {
-      const doLogout = confirm("Logout?");
+      const doLogout = confirm("Do you whant to logout?");
 
       if (doLogout) {
         clearAdmin();
-        location.href = "../admin";
+        location.href = "../login.html";
       }
     };
   }
